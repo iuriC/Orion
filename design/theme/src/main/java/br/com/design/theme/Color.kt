@@ -1,4 +1,4 @@
-package br.com.orion.ui.theme
+package br.com.design.theme
 
 import androidx.compose.ui.graphics.Color
 

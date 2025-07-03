@@ -1,0 +1,38 @@
+apply plugin: 'maven-publish'
+
+def propsFile = rootProject.file("credentials.properties")
+
+if (propsFile.canRead()) {
+    def props = new Properties()
+    propsFile.withInputStream { stream ->
+        props.load(stream)
+    }
+
+    props.each { key, value ->
+        ext[key.toString()] = value
+    }
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = "com.orion"
+            artifactId = "design"
+            version = "1.0.0"
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username = project.findProperty("gpr.user")
+                password = project.findProperty("gpr.token")
+            }
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/iuriC/Orion")
+        }
+    }
+}
