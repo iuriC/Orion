@@ -1,18 +1,5 @@
 apply plugin: 'maven-publish'
 
-def propsFile = rootProject.file("credentials.properties")
-
-if (propsFile.canRead()) {
-    def props = new Properties()
-    propsFile.withInputStream { stream ->
-        props.load(stream)
-    }
-
-    props.each { key, value ->
-        ext[key.toString()] = value
-    }
-}
-
 publishing {
     publications {
         release(MavenPublication) {

@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+apply(from = "publishing.gradle")
+
 android {
     namespace = "br.com.design.theme"
     compileSdk = 35

@@ -43,6 +43,7 @@ internal object OrionColors {
         onSecondary = DarkColors.OnSecondary,
         secondaryContainer = DarkColors.SecondaryContainer,
         onSecondaryContainer = DarkColors.OnSecondaryContainer,
+        background = DarkColors.Background,
         onBackground = DarkColors.OnBackground,
         surface = DarkColors.Surface,
         onSurface = DarkColors.OnSurface,
