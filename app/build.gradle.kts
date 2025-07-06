@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "br.com.orion"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "br.com.orion"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -23,6 +23,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
     buildFeatures {
         compose = true

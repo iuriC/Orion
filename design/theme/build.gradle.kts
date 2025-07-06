@@ -1,11 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
     namespace = "br.com.design.theme"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -18,9 +19,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
+    }
     kotlinOptions {
         jvmTarget = "11"
+    }
+    buildFeatures {
+        compose = true
     }
 }
 
