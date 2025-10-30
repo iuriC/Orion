@@ -1,0 +1,25 @@
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = "com.orion"
+            artifactId = "design"
+            version = "1.0.3"
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username = project.findProperty("gpr.user")
+                password = project.findProperty("gpr.token")
+            }
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/iuriC/Orion")
+        }
+    }
+}

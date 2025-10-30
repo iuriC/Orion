@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Orion"
 include(":app")
- 
+include(":design")
+include(":design:theme")

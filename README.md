@@ -30,4 +30,4 @@ Orion is a tribute to the constellation of the same name, representing direction
 clear vision — the same values we strive for when building quality interfaces.
 
 ## 🧑‍💻 Author
-Developed and maintained by [Iuri Chaves Padilha].
+Developed and maintained by Iuri Chaves Padilha.
