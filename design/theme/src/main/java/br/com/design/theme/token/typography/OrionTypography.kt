@@ -2,85 +2,85 @@ package br.com.design.theme.token.typography
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 internal object OrionTypography {
+
     fun value() = Typography(
         displayLarge = TextStyle(
             fontSize = 57.sp,
             lineHeight = 64.sp,
-            fontWeight = FontWeight.Normal
+            fontFamily = fontFamily
         ),
         displayMedium = TextStyle(
             fontSize = 45.sp,
             lineHeight = 52.sp,
-            fontWeight = FontWeight.Normal
+            fontFamily = fontFamily
         ),
         displaySmall = TextStyle(
             fontSize = 36.sp,
             lineHeight = 44.sp,
-            fontWeight = FontWeight.Normal
+            fontFamily = fontFamily
         ),
         headlineLarge = TextStyle(
             fontSize = 32.sp,
             lineHeight = 40.sp,
-            fontWeight = FontWeight.Normal
+            fontFamily = fontFamily
         ),
         headlineMedium = TextStyle(
             fontSize = 28.sp,
             lineHeight = 36.sp,
-            fontWeight = FontWeight.Normal
+            fontFamily = fontFamily
         ),
         headlineSmall = TextStyle(
             fontSize = 24.sp,
             lineHeight = 32.sp,
-            fontWeight = FontWeight.Normal
+            fontFamily = fontFamily
         ),
         titleLarge = TextStyle(
             fontSize = 22.sp,
             lineHeight = 28.sp,
-            fontWeight = FontWeight.Medium
+            fontFamily = fontFamily
         ),
         titleMedium = TextStyle(
             fontSize = 16.sp,
             lineHeight = 24.sp,
-            fontWeight = FontWeight.Medium
+            fontFamily = fontFamily
         ),
         titleSmall = TextStyle(
             fontSize = 14.sp,
             lineHeight = 20.sp,
-            fontWeight = FontWeight.Medium
+            fontFamily = fontFamily
         ),
         bodyLarge = TextStyle(
             fontSize = 16.sp,
             lineHeight = 24.sp,
-            fontWeight = FontWeight.Normal
+            fontFamily = fontFamily
         ),
         bodyMedium = TextStyle(
             fontSize = 14.sp,
             lineHeight = 20.sp,
-            fontWeight = FontWeight.Normal
+            fontFamily = fontFamily
         ),
         bodySmall = TextStyle(
             fontSize = 12.sp,
             lineHeight = 16.sp,
-            fontWeight = FontWeight.Normal
+            fontFamily = fontFamily
         ),
         labelLarge = TextStyle(
             fontSize = 14.sp,
             lineHeight = 20.sp,
-            fontWeight = FontWeight.Medium
+            fontFamily = fontFamily
         ),
         labelMedium = TextStyle(
             fontSize = 12.sp,
             lineHeight = 16.sp,
-            fontWeight = FontWeight.Medium
+            fontFamily = fontFamily
         ),
         labelSmall = TextStyle(
             fontSize = 11.sp,
             lineHeight = 16.sp,
-            fontWeight = FontWeight.Medium
+            fontFamily = fontFamily
         )
     )
 }

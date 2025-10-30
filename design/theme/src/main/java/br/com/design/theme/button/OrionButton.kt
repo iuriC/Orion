@@ -1,101 +1,194 @@
 package br.com.design.theme.button
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import br.com.design.theme.extension.testTags
+import androidx.compose.ui.graphics.vector.ImageVector
+import br.com.design.theme.OrionTheme
+import br.com.design.theme.button.holder.OrionButtonHolder
+import br.com.design.theme.button.type.ButtonStyle
+import br.com.design.theme.button.type.ButtonType
+import br.com.design.theme.preview.OrionPreview
 
 @Composable
-fun OrionPrimaryButton(
+fun OrionButton(
     modifier: Modifier = Modifier,
+    type: ButtonType = ButtonType.PRIMARY,
+    style: ButtonStyle = ButtonStyle.FILLED,
+    leadingIcon: ImageVector? = null,
+    trailingIcon: ImageVector? = null,
     enabled: Boolean = true,
     text: String,
     onClick: () -> Unit,
 ) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick, enabled = enabled)
-            .testTags("orion_primary_button")
-            .background(
-                color = MaterialTheme.colorScheme.primary,
-                shape = MaterialTheme.shapes.extraLarge
-            )
-            .height(50.dp),
-        contentAlignment = Alignment.Center
+    OrionButtonHolder.Init(type, style)
+
+    val colors = OrionButtonHolder.buttonColors()
+    val elevation = OrionButtonHolder.buttonElevation()
+    val border = OrionButtonHolder.buttonBorder()
+    val shape = OrionButtonHolder.buttonShape()
+
+    Button(
+        modifier = modifier.fillMaxWidth(),
+        onClick = onClick,
+        enabled = enabled,
+        colors = colors,
+        border = border,
+        shape = shape,
+        elevation = elevation
     ) {
-        Text(
+        OrionButtonContent(
             text = text,
-            color = MaterialTheme.colorScheme.onPrimary,
-            style = MaterialTheme.typography.bodyMedium
+            leadingIcon = leadingIcon,
+            trailingIcon = trailingIcon
         )
     }
 }
 
 @Composable
-fun OrionSecondaryButton(
+private fun OrionButtonContent(
     modifier: Modifier = Modifier,
-    enabled: Boolean = true,
+    leadingIcon: ImageVector? = null,
+    trailingIcon: ImageVector? = null,
     text: String,
-    onClick: () -> Unit,
 ) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick, enabled = enabled)
-            .testTags("orion_secondary_button")
-            .border(
-                width = 2.dp,
-                color = MaterialTheme.colorScheme.inversePrimary,
-                shape = MaterialTheme.shapes.extraLarge
-            )
-            .background(
-                color = MaterialTheme.colorScheme.background,
-                shape = MaterialTheme.shapes.extraLarge
-            )
-            .height(50.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = text,
-            color = MaterialTheme.colorScheme.inversePrimary,
-            style = MaterialTheme.typography.bodyMedium
-        )
+    leadingIcon?.let {
+        Icon(imageVector = it, contentDescription = it.name)
+
+        Spacer(modifier = modifier.width(OrionTheme.spacing.spacingSmall))
+    }
+
+    Text(text = text)
+
+    trailingIcon?.let {
+        Spacer(modifier = modifier.width(OrionTheme.spacing.spacingSmall))
+
+        Icon(imageVector = it, contentDescription = it.name)
     }
 }
 
 @Composable
-fun OrionTertiaryButton(
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    text: String,
-    onClick: () -> Unit,
-) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick, enabled = enabled)
-            .testTags("orion_tertiary_button")
-            .background(
-                color = MaterialTheme.colorScheme.background,
-                shape = MaterialTheme.shapes.extraLarge
-            )
-            .height(50.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = text,
-            color = MaterialTheme.colorScheme.onBackground,
-            style = MaterialTheme.typography.bodyMedium
-        )
+@OrionPreview
+private fun OrionPrimaryFilledButtonPreview() {
+    OrionTheme {
+        OrionButton(
+            text = "Primary Filled Button",
+            type = ButtonType.PRIMARY,
+            style = ButtonStyle.FILLED,
+            leadingIcon = Icons.Filled.Add,
+        ) {}
+    }
+}
+
+@Composable
+@OrionPreview
+private fun OrionPrimaryOutlineButtonPreview() {
+    OrionTheme {
+        OrionButton(
+            text = "Primary Outlined Button",
+            type = ButtonType.PRIMARY,
+            style = ButtonStyle.OUTLINED,
+            leadingIcon = Icons.Filled.Add
+        ) {}
+    }
+}
+
+@Composable
+@OrionPreview
+private fun OrionPrimaryTextButtonPreview() {
+    OrionTheme {
+        OrionButton(
+            text = "Primary Text Button",
+            type = ButtonType.PRIMARY,
+            style = ButtonStyle.TEXT,
+            leadingIcon = Icons.Filled.Add
+        ) {}
+    }
+}
+
+@Composable
+@OrionPreview
+private fun OrionSecondaryFilledButtonPreview() {
+    OrionTheme {
+        OrionButton(
+            text = "Primary Filled Button",
+            type = ButtonType.SECONDARY,
+            style = ButtonStyle.FILLED,
+            trailingIcon = Icons.Filled.Done
+        ) {}
+    }
+}
+
+@Composable
+@OrionPreview
+private fun OrionSecondaryOutlineButtonPreview() {
+    OrionTheme {
+        OrionButton(
+            text = "Primary Outlined Button",
+            type = ButtonType.SECONDARY,
+            style = ButtonStyle.OUTLINED,
+            trailingIcon = Icons.Filled.Done
+        ) {}
+    }
+}
+
+@Composable
+@OrionPreview
+private fun OrionSecondaryTextButtonPreview() {
+    OrionTheme {
+        OrionButton(
+            text = "Primary Text Button",
+            type = ButtonType.SECONDARY,
+            style = ButtonStyle.TEXT,
+            trailingIcon = Icons.Filled.Done
+        ) {}
+    }
+}
+
+@Composable
+@OrionPreview
+private fun OrionTertiaryFilledButtonPreview() {
+    OrionTheme {
+        OrionButton(
+            text = "Primary Filled Button",
+            type = ButtonType.TERTIARY,
+            style = ButtonStyle.FILLED,
+            leadingIcon = Icons.Filled.Create
+        ) {}
+    }
+}
+
+@Composable
+@OrionPreview
+private fun OrionTertiaryOutlineButtonPreview() {
+    OrionTheme {
+        OrionButton(
+            text = "Primary Outlined Button",
+            type = ButtonType.TERTIARY,
+            style = ButtonStyle.OUTLINED,
+            leadingIcon = Icons.Filled.Create
+        ) {}
+    }
+}
+
+@Composable
+@OrionPreview
+private fun OrionTertiaryTextButtonPreview() {
+    OrionTheme {
+        OrionButton(
+            text = "Primary Text Button",
+            type = ButtonType.TERTIARY,
+            style = ButtonStyle.TEXT,
+            leadingIcon = Icons.Filled.Create
+        ) {}
     }
 }

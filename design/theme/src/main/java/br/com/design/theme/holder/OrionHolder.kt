@@ -4,6 +4,7 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
+import br.com.design.theme.dimen.OrionDimens
 import br.com.design.theme.token.OrionTokens
 
 internal object OrionHolder {
